@@ -14,6 +14,27 @@
     />
   </head>
   <body>
+    <div class="darken"></div>
+    <div id="modal">
+      <div class="modal-header">
+        <p><img src="assets/book-input.svg" alt="" />Add a new book</p>
+        <button><img src="assets/close.svg" alt="" /></button>
+      </div>
+
+      <input type="text" class="title-input" placeholder="Book title" />
+
+      <div class="author-pages">
+        <input type="text" class="author-input" placeholder="Book author" />
+        <input type="number" class="pages-input" placeholder="N° of pages" />
+      </div>
+
+      <input type="text" class="url-input" placeholder="Cover image URL" />
+      <div class="checkbox">
+        <input type="checkbox" class="read-input" />
+        <p>I've already read this book</p>
+      </div>
+      <button>Add book <img src="assets/arrow.svg" alt="" /></button>
+    </div>
     <header>
       <p class="logo">BOOKLOGD</p>
     </header>
@@ -43,6 +64,7 @@
       </button>
     </div>
     <div id="books-container"></div>
+
     <footer>
       <p class="logo">BOOKLOGD</p>
       <div>

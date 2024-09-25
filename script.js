@@ -1,5 +1,11 @@
-const booksContainer = document.getElementById("books-container");
+const booksContainer = document.querySelector("#books-container");
 const readStatus = document.querySelector(".status");
+const newButton = document.querySelector(".add-button");
+const modal = document.querySelector("#modal");
+const darken = document.querySelector(".darken");
+const closeModal = document.querySelector(".modal-header > button");
+const coverImages = document.querySelectorAll(".book-cover");
+const filters = document.querySelector("#filter-select");
 const library = [
   {
     title: "Secrets of the JavaScript Ninja",
@@ -73,14 +79,25 @@ function Book(title, author, pages, read, url) {
   };
 }
 
-console.log(library[0].read);
-
 function addBookToLibrary(title, author, pages, read, url) {
   library.push(new Book(title, author, pages, read, url));
 }
 
-function displayBooks() {
-  library.forEach((book) => {
+function filterByRead(array) {
+  return array.filter((book) => book.read);
+}
+
+function filterByNotRead(array) {
+  return array.filter((book) => book.read === false);
+}
+
+function clearContainer() {
+  booksContainer.innerHTML = "";
+}
+
+function displayBooks(array) {
+  clearContainer();
+  array.forEach((book, index) => {
     booksContainer.innerHTML += `
     <div class="book">
       <img class="book-cover" src="${book.url}" />
@@ -100,8 +117,49 @@ function displayBooks() {
     </div>
     <h2 class="book-author">${book.author}</h2>
     `;
+    library.forEach((book, index) => {
+      setTimeout(() => {
+        const covers = document.querySelectorAll(".book-cover");
+        const currentCover = covers[index]; // Select the current cover using the index
+        currentCover.style.transform = "translateX(0)";
+        currentCover.style.opacity = "1";
+      }, 100 * index);
+    });
   });
 }
 
-console.log(library);
-displayBooks();
+filters.addEventListener("change", () => {
+  const selectedValue = filters.value;
+  if (selectedValue === "read") {
+    displayBooks(filterByRead(library));
+  } else if (selectedValue === "not-read") {
+    displayBooks(filterByNotRead(library));
+  } else {
+    displayBooks(library);
+  }
+});
+
+newButton.addEventListener("click", () => {
+  modal.style.display = "flex";
+  setTimeout(() => {
+    modal.style.opacity = "1";
+  }, 100);
+  darken.style.display = "flex";
+  setTimeout(() => {
+    darken.style.opacity = "1";
+  }, 100);
+  console.log("oi");
+});
+
+closeModal.addEventListener("click", () => {
+  modal.style.opacity = "0";
+  setTimeout(() => {
+    modal.style.display = "none";
+  }, 200);
+  darken.style.opacity = "0";
+  setTimeout(() => {
+    darken.style.display = "none";
+  }, 200);
+});
+
+displayBooks(library);

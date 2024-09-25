@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abel&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <p class="logo">BOOKLOGD</p>
+    </header>
+    <div class="search-bar-container">
+      <p>Track your favorite readings</p>
+      <div class="search-bar">
+        <input placeholder="Search..." />
+        <button><img src="assets/search.svg" alt="" /></button>
+      </div>
+    </div>
+    <div class="options-container">
+      <div class="filters">
+        <select name="Filters" id="filter-select">
+          <option value="">Filters</option>
+          <option value="read">Already read</option>
+          <option value="not-read">Not read yet</option>
+        </select>
+        <select name="Sort" id="sort-select">
+          <option value="">Sort</option>
+          <option value="name">Name</option>
+          <option value="author">Author</option>
+          <option value="pages">Pages</option>
+        </select>
+      </div>
+      <button class="add-button">
+        New <img src="assets/add.svg" alt="Plus icon" />
+      </button>
+    </div>
+    <div id="books-container"></div>
+    <footer>
+      <p class="logo">BOOKLOGD</p>
+      <div>
+        <p>Lorem</p>
+        <p>ipsum</p>
+        <p>dolor</p>
+        <p>sit</p>
+        <p>amet</p>
+        <p>consectetur</p>
+      </div>
+
+      <div>
+        <p>Lorem</p>
+        <p>ipsum</p>
+        <p>dolor</p>
+        <p>sit</p>
+      </div>
+
+      <div>
+        <p>Lorem</p>
+        <p>ipsum</p>
+        <p>dolor</p>
+        <p>sit</p>
+        <p>amet</p>
+      </div>
+    </footer>
+  </body>
+</html>

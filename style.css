@@ -1,0 +1,222 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  --primary-black: #030712;
+  --primary-white: #f9fafb;
+  --secondary-white: #f3f4f6;
+  --shadow: #9ca3af;
+  --grey-font: #6b7280;
+}
+
+#books-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 0 auto;
+}
+
+body {
+  background-color: var(--primary-white);
+  font-family: "Abel", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  border-left: 1px solid var(--primary-black);
+  max-width: 1600px;
+  margin: 0 auto;
+  color: #030712;
+}
+
+.book {
+  background-color: var(--secondary-white);
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--primary-black);
+  border-bottom: 1px solid var(--primary-black);
+  align-items: center;
+  position: relative;
+}
+
+.book-info {
+  background-color: var(--primary-white);
+  padding: 24px 24px;
+  border-top: 1px solid black;
+  width: 100%;
+}
+
+.book-cover {
+  height: 20rem;
+  object-fit: cover;
+  margin: 64px 24px;
+  box-shadow: 0px 4px 16px var(--shadow);
+  margin-bottom: 64px;
+  border-radius: 4px;
+}
+
+.book-title {
+  font-size: 1.5rem;
+  height: 4rem;
+  width: 16rem;
+}
+
+.title-pages {
+  display: flex;
+  justify-content: space-between;
+}
+
+.book-pages {
+  font-size: 1.5rem;
+  align-self: flex-start;
+}
+
+.status {
+  border: 1px solid var(--primary-black);
+  padding: 4px 8px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  align-self: flex-start;
+  margin-left: 24px;
+}
+
+.book-author {
+  color: var(--grey-font);
+  font-weight: 400;
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.pages-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--grey-font);
+}
+
+.pages-container > img {
+  align-self: flex-start;
+  margin-top: 0.35rem;
+}
+
+select {
+  background-color: var(--primary-white);
+  border: none;
+  font-family: "Abel", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: black;
+  font-size: 1.5rem;
+  width: 144px;
+}
+
+select:focus {
+  outline: none;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+
+.add-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.5rem;
+  padding: 8px 16px;
+  background-color: var(--primary-black);
+  color: var(--primary-white);
+  font-family: "Abel", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  box-shadow: 0px 4px px var(--shadow);
+}
+
+.options-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 24px 48px;
+  border-bottom: 1px solid var(--primary-black);
+  border-right: 1px solid var(--primary-black);
+}
+
+.search-bar-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 48px;
+  border-bottom: 1px solid var(--primary-black);
+  border-right: 1px solid var(--primary-black);
+}
+
+.search-bar-container p {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.search-bar-container input {
+  width: 20rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-family: "Abel", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-indent: 1rem;
+  background-color: var(--primary-white);
+  border: 1px solid var(--grey-font);
+  height: 100%;
+  border-right: none;
+}
+
+.search-bar-container input:focus {
+  outline: none;
+}
+
+.search-bar-container input::placeholder {
+  text-indent: 1rem;
+}
+
+.search-bar {
+  align-items: center;
+  display: flex;
+}
+
+.search-bar > button {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  padding: 4px 4px;
+  background-color: var(--primary-white);
+  border: 1px solid var(--grey-font);
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid var(--primary-black);
+  height: 5rem;
+  align-items: center;
+  border-right: 1px solid var(--primary-black);
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  gap: 20rem;
+  font-size: 1.5rem;
+  padding-top: 4rem;
+  border-right: 1px solid var(--primary-black);
+  padding-bottom: 4rem;
+}
+
+footer > div > p {
+  margin-bottom: 0.5rem;
+  color: var(--grey-font);
+}
+
+.logo {
+  font-size: 2rem;
+}

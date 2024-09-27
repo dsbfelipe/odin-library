@@ -88,7 +88,8 @@ function addBookToLibrary(title, author, pages, read, url) {
   library.push(new Book(title, author, pages, read, url));
 }
 
-addBookButton.addEventListener("click", () => {
+addBookButton.addEventListener("click", (event) => {
+  event.preventDefault();
   const title = titleInput.value;
   const author = authorInput.value;
   const pages = pagesInput.value;

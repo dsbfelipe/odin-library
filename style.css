@@ -54,8 +54,7 @@ body {
   margin-bottom: 64px;
   border-radius: 4px;
   opacity: 0;
-  transform: translateX(10rem);
-  transition: transform 0.5s ease-in-out, opacity 1s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .book-title {
@@ -78,9 +77,36 @@ body {
   border: 1px solid var(--primary-black);
   padding: 4px 8px;
   font-weight: 600;
-  margin-bottom: 24px;
-  align-self: flex-start;
   margin-left: 24px;
+}
+
+.status-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.delete-button {
+  margin-right: 1.5rem;
+  width: 6rem;
+  height: 2rem;
+  border: none;
+  background-color: var(--primary-black);
+  color: var(--primary-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: "Abel", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1rem;
+}
+
+.trash-icon {
+  width: 1rem;
 }
 
 .book-author {
@@ -92,15 +118,14 @@ body {
 
 .pages-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.5rem;
-  margin-bottom: 0.5rem;
   color: var(--grey-font);
 }
 
 .pages-container > img {
   align-self: flex-start;
-  margin-top: 0.35rem;
+  margin-top: 0.25rem;
 }
 
 select {

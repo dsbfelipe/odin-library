@@ -6,6 +6,12 @@ const darken = document.querySelector(".darken");
 const closeModal = document.querySelector(".modal-header > button");
 const coverImages = document.querySelectorAll(".book-cover");
 const filters = document.querySelector("#filter-select");
+const titleInput = document.querySelector(".title-input");
+const authorInput = document.querySelector(".author-input");
+const pagesInput = document.querySelector(".pages-input");
+const urlInput = document.querySelector(".url-input");
+const readInput = document.querySelector(".read-input");
+const addBookButton = document.querySelector(".add-book");
 const library = [
   {
     title: "Secrets of the JavaScript Ninja",
@@ -83,6 +89,22 @@ function addBookToLibrary(title, author, pages, read, url) {
   library.push(new Book(title, author, pages, read, url));
 }
 
+addBookButton.addEventListener("click", () => {
+  const title = titleInput.value;
+  const author = authorInput.value;
+  const pages = pagesInput.value;
+  const read = readInput.checked;
+  const url = urlInput.value;
+  addBookToLibrary(title, author, pages, read, url);
+  closeModalFunction();
+  displayBooks(library);
+  titleInput.value = "";
+  authorInput.value = "";
+  pagesInput.value = "";
+  readInput.checked = false;
+  urlInput.value = "";
+});
+
 function filterByRead(array) {
   return array.filter((book) => book.read);
 }
@@ -99,9 +121,12 @@ function displayBooks(array) {
   clearContainer();
   array.forEach((book, index) => {
     booksContainer.innerHTML += `
-    <div class="book">
+    <div class="book" data-attribute="${index}">
       <img class="book-cover" src="${book.url}" />
-      <p class="status">${book.read ? "Already read" : "Not read yet"}</p>
+      <div class="status-container">
+        <p class="status">${book.read ? "Already read" : "Not read yet"}</p>
+        <button class="delete-button" data-attribute="${index}"><img class="trash-icon" src="assets/trash.svg">Delete</button>
+      </div>
       <div class="book-info">
         <div class="title-pages">
           <h1 class="book-title">${book.title}</h1>
@@ -121,9 +146,19 @@ function displayBooks(array) {
       setTimeout(() => {
         const covers = document.querySelectorAll(".book-cover");
         const currentCover = covers[index]; // Select the current cover using the index
-        currentCover.style.transform = "translateX(0)";
         currentCover.style.opacity = "1";
       }, 100 * index);
+    });
+  });
+
+  const deleteBookButtons = document.querySelectorAll(".delete-button");
+  deleteBookButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const targetElement = event.target.closest(".delete-button");
+      const index = targetElement.dataset.attribute;
+      console.log(index);
+      library.splice(index, 1);
+      displayBooks(library);
     });
   });
 }
@@ -151,7 +186,9 @@ newButton.addEventListener("click", () => {
   console.log("oi");
 });
 
-closeModal.addEventListener("click", () => {
+closeModal.addEventListener("click", closeModalFunction);
+
+function closeModalFunction() {
   modal.style.opacity = "0";
   setTimeout(() => {
     modal.style.display = "none";
@@ -160,6 +197,6 @@ closeModal.addEventListener("click", () => {
   setTimeout(() => {
     darken.style.display = "none";
   }, 200);
-});
+}
 
 displayBooks(library);

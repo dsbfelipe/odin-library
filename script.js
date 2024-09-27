@@ -1,5 +1,4 @@
 const booksContainer = document.querySelector("#books-container");
-const readStatus = document.querySelector(".status");
 const newButton = document.querySelector(".add-button");
 const modal = document.querySelector("#modal");
 const darken = document.querySelector(".darken");
@@ -124,7 +123,9 @@ function displayBooks(array) {
     <div class="book" data-attribute="${index}">
       <img class="book-cover" src="${book.url}" />
       <div class="status-container">
-        <p class="status">${book.read ? "Already read" : "Not read yet"}</p>
+        <button class="status" data-attribute="${index}">${
+      book.read ? "Already read" : "Not read yet"
+    }</button>
         <button class="delete-button" data-attribute="${index}"><img class="trash-icon" src="assets/trash.svg">Delete</button>
       </div>
       <div class="book-info">
@@ -142,13 +143,6 @@ function displayBooks(array) {
     </div>
     <h2 class="book-author">${book.author}</h2>
     `;
-    library.forEach((book, index) => {
-      setTimeout(() => {
-        const covers = document.querySelectorAll(".book-cover");
-        const currentCover = covers[index]; // Select the current cover using the index
-        currentCover.style.opacity = "1";
-      }, 100 * index);
-    });
   });
 
   const deleteBookButtons = document.querySelectorAll(".delete-button");
@@ -158,6 +152,21 @@ function displayBooks(array) {
       const index = targetElement.dataset.attribute;
       console.log(index);
       library.splice(index, 1);
+      displayBooks(library);
+    });
+  });
+
+  const readStatus = document.querySelectorAll(".status");
+  readStatus.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const targetElement = event.target.closest(".status");
+      const index = targetElement.dataset.attribute;
+
+      if (library[index].read) {
+        library[index].read = false;
+      } else {
+        library[index].read = true;
+      }
       displayBooks(library);
     });
   });
